@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<%= render 'users/list', user: @user %>
+<%= render 'books/list', book: @book_new %>
+
+  <% @books.each do |book| %>
+    <h4>Books</h4>
+     <table class="table">
+        <thread>
+           <th></th>
+           <th>Title</th>
+           <th>Opinion</th>
+         </thread>
+         <tbody>
+           <tr>
+             <td> <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+             <td>
+                 <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                 <% end %>
+             </td>
+             <td><%= book.body %></td>
+           </tr>
+         </tbody>
+     </table>
+ <% end %>

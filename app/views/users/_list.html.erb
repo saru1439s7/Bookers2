@@ -1,0 +1,32 @@
+<head><script src="https://kit.fontawesome.com/dbcf060d61.js" crossorigin="anonymous"></script></head>
+
+<h4>User info</h4>
+ <table class = "table">
+   <tbody>
+    <tr>
+       <th></th>
+       <th><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+    </tr>
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+       </tr>
+       <tr>
+        <th>introduction</th>
+        <th><%= user.introdution %></th>
+       </tr>
+   </tbody>
+ </table>
+    <table>
+     <% if user.id == current_user.id %>
+       <%= link_to edit_user_path(user) do%>
+         <i class="fas fa-user-cog btn btn btn-outline-secondary btn-block"></i>
+     <!-- %= link_to edit_user_path, class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>-->
+      <%end%>
+     <% end %>
+    </table>
+
+
+
+
+
