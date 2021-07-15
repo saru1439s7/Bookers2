@@ -1,36 +1,36 @@
-<div class="cintainer">
+<p id="notice"></p>
+<div class="container">
   <div class= "row">
     <div class="col-md-3">
-     <%= render 'users/list', user: @user %>
+     <%= render 'users/list', user: @userz %>
      <%= render 'books/list', book: @book_new %>
     </div>
-    <div class ="col-md-8">
+
+    <div class ="col-md-8 offset-md-1">
      <table class="table-striped">
      <h4>Book detail</h4>
        <table class="table">
         <tbody>
          <tr>
           <td>
-            <%= attachment_image_tag @book.user,:profile_image,:fill, 60, 60, fallback: "no_image.jpg" %>
-            <% link_to user_path(@book.user) do%>
-             <%= @book.user.name %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to book_path(@book) do %>
-             <%= @book.title %>
+           <%= link_to user_path(@book.user) do%>
+             <p><%= attachment_image_tag(@book.user,:profile_image,:fill, 60, 60, fallback: "no_image.jpg") %></p>
+             <p><%= @book.user.name %></p>
             <%end%>
           </td>
+          <td>
+             <%= link_to book_path(@book) do %>
+              <%= @book.title %>
+             <%end%>
+           </td>
            <td><%= @book.body %></td>
 
           <% if @book.user == current_user %>
-            <td><%= link_to edit_book_path(@book) do %>
-              <a class="btn btn-sm btn-success">Edit</a>
-                <%end%>
+            <td>
+              <%= link_to "Edit",edit_book_path(@book.id),class:"btn btn-sm btn-success" %>
             </td>
-            <td><%= link_to book_path(@book), method: :delete do %>
-            <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger">Destroy</a>
-               <%end%>
+            <td>
+            <%= link_to "Destroy",book_path, method: :delete, data: {confirm: "本当に消しますか？"},class:"btn btn-sm btn-danger" %>
             </td>
           <% end %>
           </tr>

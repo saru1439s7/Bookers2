@@ -1,4 +1,7 @@
-<head><script src="https://kit.fontawesome.com/dbcf060d61.js" crossorigin="anonymous"></script></head>
+<head>
+ <script src="https://kit.fontawesome.com/e78e8d5093.js" crossorigin="anonymous"></script>
+</head>
+
 
 <h4>User info</h4>
  <table class = "table">
@@ -13,20 +16,27 @@
        </tr>
        <tr>
         <th>introduction</th>
-        <th><%= user.introdution %></th>
+        <th><%= user.introduction %></th>
        </tr>
    </tbody>
  </table>
     <table>
-     <% if user.id == current_user.id %>
-       <%= link_to edit_user_path(user) do%>
-         <i class="fas fa-user-cog btn btn btn-outline-secondary btn-block"></i>
-     <!-- %= link_to edit_user_path, class: "btn btn-outline-secondary btn-block fas fa-user-cog"%>-->
-      <%end%>
-     <% end %>
+    
+        <%= link_to edit_user_path(user) do%>
+         <div class=" btn btn-outline-secondary btn-block fas fa-user-cog"></div>
+        <%end%>
+    
     </table>
-
-
+     <!--%消してある　rspecではcontrollerで設定する
+       < % if user == current_user %>
+        <=link_to edit_user_path(user) do %>
+         <div class=" btn btn-outline-secondary btn-block fas fa-user-cog"></div>
+        <end%>
+     <else %>
+        %= link_to  user_path(current_user.id) do%>
+          <div class=" btn btn-outline-secondary btn-block fas fa-user-cog"></div>
+      <end%>
+     < end %>  -->
 
 
 
